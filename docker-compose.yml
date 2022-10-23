@@ -1,6 +1,7 @@
 version: "3"
 services:
   srv:
+    restart: unless-stopped
     image: caddy:2
     ports:
       - "80:80"
@@ -9,6 +10,7 @@ services:
       - ./srv/Caddyfile:/etc/caddy/Caddyfile
       - ./data:/data
   api:
+    restart: unless-stopped
     build: api
     ports:
       - "8080:80"

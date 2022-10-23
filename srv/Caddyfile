@@ -1,0 +1,11 @@
+:80 {
+	# Protect everything not under /files with basic auth.
+	@NoAccess not path_regexp /files/.+
+	basicauth @NoAccess {
+		oscar $2a$14$YfmrI/epOsc4aRBWY806COS.FyCckrvRS2Veo95j96T6v1n6g8UmS
+		sarah $2a$14$GugdmTmEA3biFMzfWbQF/uWkrG9CtJ30O/5clRqRYC3tSbcoKJ7fe
+	}
+
+	# Reverse proxy for local Node server.
+	reverse_proxy http://api:80
+}

@@ -1,0 +1,28 @@
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<h1>Convert Page Into E-Reader Format</h1>
+<form action="/api/ereader" method="post" encType="multipart/form-data">
+    <label>
+        Enter URL:
+        <input type="url" name="url" style="width:100%" required />
+    </label>
+    <fieldset>
+        <legend>Select output format:</legend>
+        <div>
+            <label>
+                PDF
+                <input type="radio" name="format" value="pdf" checked>
+            </label>
+        </div>
+
+        <div>
+            <label>
+                EPUB
+                <input type="radio" name="format" value="epub">
+            </label>
+        </div>
+    </fieldset>
+    <input type="submit" />
+</form>

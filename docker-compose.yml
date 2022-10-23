@@ -1,0 +1,16 @@
+version: "3"
+services:
+  srv:
+    image: caddy:2
+    ports:
+      - "80:80"
+    volumes:
+      - ./files:/var/www/public/files
+      - ./srv/Caddyfile:/etc/caddy/Caddyfile
+      - ./data:/data
+  api:
+    build: api
+    ports:
+      - "8080:80"
+    volumes:
+      - ./files:/var/www/public/files

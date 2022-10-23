@@ -1,0 +1,34 @@
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<h1>File Link</h1>
+<div id="qrcode">{{qrcode}}</div>
+<p><a id="file-link">{{file link}}</a></p>
+<script type="text/javascript">
+
+    // Get the file name from the URL parameters.
+    const url = new URL(window.location.href);
+    // const fname = decodeURIComponent(url.searchParams.get('fname'));
+    const fname = url.searchParams.get('fname');
+    const fileUri = new URL(`/files/${fname}`, url);
+
+    // Update the link element.
+    const linkElem = document.querySelector('#file-link');
+    linkElem.href = fileUri.href;
+    linkElem.innerHTML = fileUri.href;
+
+    // Create the QR code and display it.
+    const codeElem = document.querySelector('#qrcode');
+    codeElem.innerHTML = '';
+    new QRCode(codeElem, {
+        text: fileUri,
+        width: 256,
+        height: 256,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.L,
+    });
+
+</script>
